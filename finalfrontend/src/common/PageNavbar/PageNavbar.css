@@ -1,0 +1,25 @@
+.offcanvas-design  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-navbar {
+    height: 1.7em;
+    width: 4.5em;
+}
+
+.navbar-design {
+    font-size: 1.7em;
+    color: black;
+    font-weight: bolder;
+    
+    border: solid 0.5px black;
+}
+
+.design-offcanvas {
+    background: linear-gradient(to bottom right, rgb(218, 156, 42), rgba(177, 129, 39, 0.8));
+    font-weight: bolder;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
+}
