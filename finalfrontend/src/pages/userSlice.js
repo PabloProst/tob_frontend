@@ -4,6 +4,7 @@ export const userSlice = createSlice({
     name: 'user',
     initialState: {
       credentials: {
+        user_id: "",
         name: "",
         email: "",
         password: "",

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { userData } from '../pages/userSlice';
 
 
 // Register
@@ -17,4 +18,11 @@ export const logUser = async (body) => {
     }
 
     return await axios.post(`http://localhost:3000/login`, user);
+}
+
+
+// Add score
+
+export const addScore = async (body) => {
+    return await axios.post('http://localhost:3000/score', body)
 }
