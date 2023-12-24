@@ -12,7 +12,7 @@ export const Rules = () => {
         </span>
         <span> The game ends when you touch a bomb. Good luck.</span>
 
-        <Link to="/play" className='btn-go'>GO</Link>
+        <Link to="/play" className='btn-play'>GO</Link>
       </div>
     </div>
   );

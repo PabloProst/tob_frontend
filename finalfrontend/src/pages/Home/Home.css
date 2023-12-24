@@ -18,7 +18,8 @@
     border: solid 2px red;
     border-radius: 1em;
 
-    background-color: rgb(34, 33, 33);
+    background-color:orange;
+
   }
   
   .image-logo {
@@ -35,18 +36,23 @@
     width: 8em;
     height: 2.5em;
     margin-top: 5em;
-    background-color: transparent;
-    border: solid 2px white;
+    background-color: orangered;
+    border: solid 2px black;
     border-radius: 1em;
-    color: white;
-    font-family: cursive;
-    font-size: 1em;
+    font-family: 'Bangers';
+    font-size: 3em;
+    line-height: 2.5em; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; 
   }
   
   .btn-play:hover{
     cursor: pointer;
     scale: 1.1;
-    background-color: gray;
+    background-color: greenyellow;
     transition: 0.2s;
     border: solid 2px black;
+    color: black;
   }

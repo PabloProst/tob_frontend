@@ -6,11 +6,24 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import './PageNavbar.css';
+import { useSelector, useDispatch } from "react-redux";
+import { logout, userData, login } from "../../pages/userSlice";
 import { logUser, registerUser } from '../../services/apiCalls';
+import { useNavigate } from 'react-router-dom';
 
 export const PageNavbar = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+
+  // REDUX
+  const dispatch = useDispatch();
+  const rdxCredentials = useSelector(userData);
+  const navigate = useNavigate();
+
+  const logOutMe = () => {
+    dispatch(logout({ credentials: "" }));
+    navigate("/");
+  };
 
   const handleLoginClick = () => {
     setShowLogin(!showLogin);
@@ -56,7 +69,11 @@ export const PageNavbar = () => {
         password,
       });
 
-      console.log(response.data);
+      dispatch(login({ TOKEN: response.data.token, ...response.data }));
+
+      setShowLogin(false);
+
+      console.log('Login successful:', response.data);
     } catch (error) {
       console.error('Error during login:', error);
     }
@@ -75,12 +92,19 @@ export const PageNavbar = () => {
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="#link">About</Nav.Link>
               <Nav.Link href="#link">Ranking</Nav.Link>
-              <NavDropdown title="Account" id="basic-nav-dropdown">
-                <NavDropdown.Item onClick={handleLoginClick}>Login</NavDropdown.Item>
-                <NavDropdown.Item onClick={handleRegisterClick}>Register</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Contact</NavDropdown.Item>
-              </NavDropdown>
+              {rdxCredentials?.credentials.token ? (
+                <>
+                  <Nav.Link href="/profile">{rdxCredentials.credentials.name}</Nav.Link>
+                  <Nav.Link onClick={logOutMe}>Logout</Nav.Link>
+                </>
+              ) : (
+                <NavDropdown title="Account" id="basic-nav-dropdown">
+                  <NavDropdown.Item onClick={handleLoginClick}>Login</NavDropdown.Item>
+                  <NavDropdown.Item onClick={handleRegisterClick}>Register</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item>Contact</NavDropdown.Item>
+                </NavDropdown>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -137,7 +161,6 @@ export const PageNavbar = () => {
           </div>
         </Offcanvas.Body>
       </Offcanvas>
-
     </>
   );
 };

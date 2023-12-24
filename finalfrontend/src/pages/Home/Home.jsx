@@ -7,7 +7,9 @@ export const Home = () => {
     <div className='home-design'>
       <div className='home-container'>
         <img src='./src/assets/img/logo.png' alt='Logo' className='image-logo'></img>
-        <Link to="/rules" className='btn-play'>PLAY</Link>
+        <Link to="/rules" style={{ fontSize: '1.3em' }} className='btn-play'>
+  PLAY
+</Link>
       </div>
     </div>
   );

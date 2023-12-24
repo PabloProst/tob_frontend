@@ -13,7 +13,7 @@
   .score {
     font-size: 20px;
     margin-bottom: 10px;
-    color: white;
+    color: black;
   }
   
   .squares-container {
@@ -23,6 +23,7 @@
   }
   
   .square {
+    border: solid 2px black;
     width: 100px;
     height: 100px;
     background-color: yellow;

@@ -29,9 +29,10 @@ body {
   width: 100vw;
   height: 100vh;
 
-  background-color: red;
   font-family: 'Bangers';
+  background-color: yellow;
 
+  
   overflow-x: hidden;
 }
 

@@ -3,6 +3,7 @@ import { Home } from '../Home/Home';
 import { Rules } from '../Rules/Rules';
 import { InGame } from '../InGame/InGame';
 
+
 export const Body = () => {
     return (
         <>

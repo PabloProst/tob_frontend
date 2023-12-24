@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './InGame.css';
 
 export const InGame = () => {
@@ -28,7 +27,7 @@ export const InGame = () => {
                 className={`square ${index === bombIndex ? 'bomb' : ''}`}
                 onClick={() => handleSquareClick(index)}
               >
-                {index === bombIndex ? '💣' : ''}
+                {index === bombIndex ? '' : ''}
               </div>
             ))}
           </div>
