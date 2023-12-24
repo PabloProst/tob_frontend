@@ -91,7 +91,7 @@ export const PageNavbar = () => {
             <Nav className="ms-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="#link">About</Nav.Link>
-              <Nav.Link href="#link">Ranking</Nav.Link>
+              <Nav.Link href="/ranking">Ranking</Nav.Link>
               {rdxCredentials?.credentials.token ? (
                 <>
                   <Nav.Link href="/profile">{rdxCredentials.credentials.name}</Nav.Link>

@@ -1,0 +1,20 @@
+.ranking-container {
+    text-align: center;
+  }
+  
+  .ranking-table {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .column {
+    margin-left: 20px;
+  }
+  
+  .bold {
+    font-weight: bold;
+  }
+  
+  .margin-bottom {
+    margin-bottom: 8px;
+  }

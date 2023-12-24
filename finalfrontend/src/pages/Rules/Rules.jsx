@@ -8,9 +8,9 @@ export const Rules = () => {
       <div className='ingame-container'>
         <span>HOW TO PLAY</span>
         <span>
-          You must select the correct square from 4 different options. 2 of them contain bombs that will make you lose the game, and the other 2 will allow you to progress in the game and earn points.
+          You must select the correct square from 4 different options. one of them contains a bomb that will make you lose the game, and the other 3 will allow you to progress in the game and earn points.
         </span>
-        <span> The game ends when you touch a bomb. Good luck.</span>
+        <span> The game ends when you touch the bomb. Good luck.</span>
 
         <Link to="/play" className='btn-play'>GO</Link>
       </div>
