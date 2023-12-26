@@ -1,66 +1,59 @@
+import './Ranking.css'
 import React, { useEffect, useState } from 'react';
 import { getRanking, getUserById } from '../../services/apiCalls';
 
 export const Ranking = () => {
   const [ranking, setRanking] = useState([]);
-
-  useEffect(() => {
-    const getTheRanking = async () => {
-      try {
-        const rankingData = await getRanking();
-        const sortedRanking = rankingData.sort((a, b) => b.score - a.score);
-        setRanking(sortedRanking);
-      } catch (error) {
-        console.error('Error getting ranking:', error);
-      }
-    };
-
-    getTheRanking();
-  }, []);
-
   const [userNames, setUserNames] = useState({});
 
   useEffect(() => {
-    const getUserNames = async () => {
+    const fetchData = async () => {
       try {
+        const rankingData = await getRanking();
+        const sortedRanking = rankingData.sort((a, b) => b.score - a.score);
+
+        const top10Ranking = sortedRanking.slice(0, 10);
+
+        setRanking(top10Ranking);
+
         const names = {};
-        for (const entry of ranking) {
+        for (const entry of top10Ranking) {
           const userData = await getUserById(entry.userId);
           names[entry.userId] = userData.name;
         }
         setUserNames(names);
       } catch (error) {
-        console.error(error);
+        console.error('Error fetching data:', error);
       }
     };
 
-    getUserNames();
-  }, [ranking]);
+    fetchData();
+  }, []);
 
   return (
-    <div style={{ textAlign: 'center' }}>
+    <div className="ranking-container">
       <h1>Ranking</h1>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <div>
-          <div style={{ fontWeight: 'bold', marginBottom: '8px' }}>Rank</div>
+      <div className="ranking-table">
+        <div className="column">
+          <div className="bold margin-bottom">Rank</div>
           {ranking.map((entry, index) => (
-            <div key={index} style={{ marginBottom: '8px' }}>
+            <div key={index} className="margin-bottom">
               {index + 1}
             </div>
           ))}
         </div>
-        <div style={{ marginLeft: '20px' }}>
-          <div style={{ fontWeight: 'bold', marginBottom: '8px' }}>User</div>
+        <div className="column">
+          <div className="bold margin-bottom">User</div>
           {ranking.map((entry, index) => (
-            <div key={index} style={{ marginBottom: '8px' }}>
+            <div key={index} className="margin-bottom">
               {userNames[entry.userId]}
             </div>
           ))}
         </div>
-        <div style={{ marginLeft: '20px' }}>
-          <div style={{ fontWeight: 'bold', marginBottom: '8px' }}>Score</div>
+        <div className="column">
+          <div className="bold margin-bottom">Score</div>
           {ranking.map((entry, index) => (
-            <div key={index} style={{ marginBottom: '8px' }}>
+            <div key={index} className="margin-bottom">
               {entry.score}
             </div>
           ))}
