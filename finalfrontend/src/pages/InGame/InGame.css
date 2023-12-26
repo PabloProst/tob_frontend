@@ -51,3 +51,11 @@
     margin-top: 20px;
   }
   
+  .btn-play-again{
+    margin-top: 15px;
+    height: 3em;
+    width: 6em;
+    font-size: 15px;
+    line-height: 1em;
+    text-align: center;
+  }

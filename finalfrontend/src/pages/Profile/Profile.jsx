@@ -57,7 +57,7 @@ export const Profile = () => {
         console.log("Datos enviados");
         console.log(profile);
         console.log(token);
-       dispatchEvent(login(profile));
+       dispatch(login(profile));
         setIsEnabled(true);
       })
       .catch(error => {
