@@ -101,8 +101,6 @@ export const PageNavbar = () => {
                 <NavDropdown title="Account" id="basic-nav-dropdown">
                   <NavDropdown.Item onClick={handleLoginClick}>Login</NavDropdown.Item>
                   <NavDropdown.Item onClick={handleRegisterClick}>Register</NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item>Contact</NavDropdown.Item>
                 </NavDropdown>
               )}
             </Nav>

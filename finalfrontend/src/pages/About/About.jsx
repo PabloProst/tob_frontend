@@ -6,7 +6,7 @@ export const About = () => {
   return (
     <div className='home-design'>
       <div className='ingame-container'>
-        <span>HOW TO PLAY</span>
+        <span>WELCOME TO TRAIL OF BOMBS</span>
         <span>
           You must select the correct square from 4 different options. one of them contains a bomb that will make you lose the game, and the other 3 will allow you to progress in the game and earn points.
         </span>

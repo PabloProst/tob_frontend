@@ -33,7 +33,7 @@ body {
   background: linear-gradient(to bottom right, yellow, orange);
 
   
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 h1 {
