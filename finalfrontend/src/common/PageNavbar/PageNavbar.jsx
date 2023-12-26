@@ -52,6 +52,10 @@ export const PageNavbar = () => {
       });
 
       console.log(response.data);
+
+      setShowRegister(false);
+      await handleLoginSubmit(e);
+      
     } catch (error) {
       console.error('Error during registration:', error);
     }
