@@ -30,7 +30,7 @@ body {
   height: 100vh;
 
   font-family: 'Bangers';
-  background-color: yellow;
+  background: linear-gradient(to bottom right, yellow, orange);
 
   
   overflow-x: hidden;
