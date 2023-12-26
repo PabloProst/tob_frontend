@@ -12,7 +12,7 @@ export const Ranking = () => {
         const rankingData = await getRanking();
         const sortedRanking = rankingData.sort((a, b) => b.score - a.score);
 
-        const top10Ranking = sortedRanking.slice(0, 10);
+        const top10Ranking = sortedRanking.slice(0, 15);
 
         setRanking(top10Ranking);
 
@@ -32,7 +32,7 @@ export const Ranking = () => {
 
   return (
     <div className="ranking-container">
-      <h1>Ranking</h1>
+      <div className='title-ranking'>Ranking</div>
       <div className="ranking-table">
         <div className="column">
           <div className="bold margin-bottom">Rank</div>
