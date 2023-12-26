@@ -12,7 +12,7 @@ export const Ranking = () => {
         const rankingData = await getRanking();
         const sortedRanking = rankingData.sort((a, b) => b.score - a.score);
 
-        const top10Ranking = sortedRanking.slice(0, 15);
+        const top10Ranking = sortedRanking.slice(0, 10);
 
         setRanking(top10Ranking);
 

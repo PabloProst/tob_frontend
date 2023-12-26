@@ -2,13 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(to bottom right, yellow, orange) !important;
   height: 40em;
   width: 40em;
   border: solid 2px red;
   border-radius: 1em;
   margin: auto;
   margin-top: 5em;
+  background-color: orange;
 }
 
 .ranking-table {
@@ -17,6 +17,7 @@
   justify-content: space-around; 
   width: 100%; 
   margin-top: 1em;
+  font-size: 1.5em;
 }
 
 .column {
