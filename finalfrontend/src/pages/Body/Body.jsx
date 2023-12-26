@@ -4,6 +4,7 @@ import { Rules } from '../Rules/Rules';
 import { InGame } from '../InGame/InGame';
 import { Ranking } from '../Ranking/Ranking';
 import { About } from '../About/About';
+import { Profile } from '../Profile/Profile';
 
 
 export const Body = () => {
@@ -16,6 +17,7 @@ export const Body = () => {
                 <Route path="/play" element={<InGame />} />
                 <Route path="/ranking" element={<Ranking />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/profile" element={<Profile />} />
             </Routes>
         </>
     )

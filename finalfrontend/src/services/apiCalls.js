@@ -49,3 +49,18 @@ export const getUserById = async (userId) => {
       throw error;  
     }
   };
+
+  // Edit profile
+  export const updateProfile = async (profile, datosRdxUser) => {
+    try {
+      const tokenHeader = {
+        headers: {
+          'Authorization': `Bearer ${datosRdxUser.credentials.token}`
+        }
+      };
+  
+      return await axios.put('http://localhost:3000/update', profile, tokenHeader);
+    } catch (error) {
+      console.log(error);
+    }
+  };
