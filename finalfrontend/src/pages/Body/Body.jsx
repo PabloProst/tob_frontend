@@ -5,6 +5,8 @@ import { InGame } from '../InGame/InGame';
 import { Ranking } from '../Ranking/Ranking';
 import { About } from '../About/About';
 import { Profile } from '../Profile/Profile';
+import { Achievements } from '../Achievements/Achievements';
+import { AdminPanel } from '../AdminPanel/AdminPanel';
 
 
 export const Body = () => {
@@ -18,6 +20,8 @@ export const Body = () => {
                 <Route path="/ranking" element={<Ranking />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/achievements" element={<Achievements />} />
+                <Route path="/admin" element={<AdminPanel />} />
             </Routes>
         </>
     )

@@ -55,7 +55,7 @@ export const PageNavbar = () => {
 
       setShowRegister(false);
       await handleLoginSubmit(e);
-      
+
     } catch (error) {
       console.error('Error during registration:', error);
     }
@@ -74,6 +74,9 @@ export const PageNavbar = () => {
       });
 
       dispatch(login({ TOKEN: response.data.token, ...response.data }));
+
+      console.log('Login successful:', response.data);
+      console.log('Redux state:', rdxCredentials);
 
       setShowLogin(false);
 
@@ -96,9 +99,13 @@ export const PageNavbar = () => {
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/about">About</Nav.Link>
               <Nav.Link href="/ranking">Ranking</Nav.Link>
+              <Nav.Link href="/achievements">Achievements</Nav.Link>
               {rdxCredentials?.credentials.token ? (
                 <>
                   <Nav.Link href="/profile">{rdxCredentials.credentials.name}</Nav.Link>
+                  {rdxCredentials.credentials.role === 'admin' && (
+                    <span className='admin-panel-text'><Nav.Link href="/admin">Admin</Nav.Link></span>
+                  )}
                   <Nav.Link onClick={logOutMe}>Logout</Nav.Link>
                 </>
               ) : (
