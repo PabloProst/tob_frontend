@@ -1,0 +1,30 @@
+.text-admin-panel {
+    font-size: 2em;
+    border: solid 2px red;
+    border-radius: 1em;
+    padding: 10px;
+    background-color: white;
+    color: black;
+}
+
+.ingame-container-admin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  
+    height: 40em;
+    width: 40em;
+  
+    border: solid 2px gree;
+    border-radius: 1em;
+  
+    background-color: wheat;
+    border: solid 2px red;
+}
+
+.text-admin-panel:hover {
+    cursor: pointer;
+    transition: 0.2s;
+    scale: 1.1;
+}

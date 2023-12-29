@@ -1,13 +1,10 @@
 import axios from 'axios';
-import { userData } from '../pages/userSlice';
-
 
 // Register
 export const registerUser = async (body) => {
 
     return await axios.post('http://localhost:3000/register', body);
 };
-
 
 // Login
 export const logUser = async (body) => {
@@ -20,13 +17,10 @@ export const logUser = async (body) => {
     return await axios.post(`http://localhost:3000/login`, user);
 }
 
-
 // Add score
-
 export const addScore = async (body) => {
     return await axios.post('http://localhost:3000/score', body)
 }
-
 
 // Ranking 
 export const getRanking = async () => {
@@ -38,7 +32,6 @@ export const getRanking = async () => {
       throw error; 
     }
   };
-
 
 // Get user by id
 export const getUserById = async (userId) => {
@@ -58,9 +51,16 @@ export const getUserById = async (userId) => {
           'Authorization': `Bearer ${datosRdxUser.credentials.token}`
         }
       };
-  
+
       return await axios.put('http://localhost:3000/update', profile, tokenHeader);
     } catch (error) {
       console.log(error);
     }
   };
+
+  // List all users
+  export const getAllUsers = async (token) => {
+    return await axios.get(`http://localhost:3000/admin/users`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+  }
