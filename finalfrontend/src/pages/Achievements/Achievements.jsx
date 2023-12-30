@@ -11,7 +11,7 @@ export const Achievements = () => {
         const response = await getAllAchievements();
         setAchievements(response.data.upgrades);
       } catch (error) {
-        console.error('Error fetching achievements:', error);
+        console.error('Error getting achievements:', error);
       }
     };
 
