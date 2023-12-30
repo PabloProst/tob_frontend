@@ -76,3 +76,8 @@ export const editAchievement = async (body, token) => {
     headers: { Authorization: `Bearer ${token}` }
   });
 };
+
+// Delete Achievement
+export const delAchievement = async (id) => {
+  return await axios.delete(`http://localhost:3000/deleteupgrade/${id}`);
+};

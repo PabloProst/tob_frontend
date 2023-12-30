@@ -10,6 +10,7 @@ import { AdminPanel } from '../AdminPanel/AdminPanel';
 import { AllUsers } from '../AllUsers/AllUsers';
 import { NewAchievement } from '../NewAchievement/NewAchievement';
 import { EditAchievement } from '../EditAchievement/EditAchivement';
+import { DeleteAchievement } from '../DeleteAchievement/DeleteAchievement';
 
 
 export const Body = () => {
@@ -28,6 +29,7 @@ export const Body = () => {
                 <Route path="/users" element={<AllUsers />} />
                 <Route path="/newachievement" element={<NewAchievement />} />
                 <Route path="/editachievement" element={<EditAchievement />} />
+                <Route path="/deleteachievement" element={<DeleteAchievement />} />
             </Routes>
         </>
     )

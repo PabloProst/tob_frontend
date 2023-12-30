@@ -12,7 +12,9 @@ export const AdminPanel = () => {
                 <Link to='/editachievement'>
                     <div className='text-admin-panel'>Edit achievement</div>
                 </Link>
-                <div className='text-admin-panel'>Delete achievement</div>
+                <Link to='/deleteachievement'>
+                    <div className='text-admin-panel'>Delete achievement</div>
+                </Link>
                 <Link to="/users">
                     <div className='text-admin-panel' href='/users'>List all users</div>
                 </Link>
