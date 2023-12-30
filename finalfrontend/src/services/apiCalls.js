@@ -69,3 +69,10 @@ export const getUserById = async (userId) => {
   export const createAchievement = async (body) => {
     return await axios.post('http://localhost:3000/newupgrade/', body);
   }
+
+  // Edit Achievement
+export const editAchievement = async (body, token) => {
+  return await axios.put('http://localhost:3000/editupgrade/' + body.id, body, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+};
