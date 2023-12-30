@@ -64,3 +64,8 @@ export const getUserById = async (userId) => {
       headers: { Authorization: `Bearer ${token}` }
     })
   }
+
+  // Create Achievement
+  export const createAchievement = async (body) => {
+    return await axios.post('http://localhost:3000/newupgrade/', body);
+  }

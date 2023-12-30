@@ -8,6 +8,7 @@ import { Profile } from '../Profile/Profile';
 import { Achievements } from '../Achievements/Achievements';
 import { AdminPanel } from '../AdminPanel/AdminPanel';
 import { AllUsers } from '../AllUsers/AllUsers';
+import { NewAchievement } from '../NewAchievement/NewAchievement';
 
 
 export const Body = () => {
@@ -24,6 +25,7 @@ export const Body = () => {
                 <Route path="/achievements" element={<Achievements />} />
                 <Route path="/admin" element={<AdminPanel />} />
                 <Route path="/users" element={<AllUsers />} />
+                <Route path="/newachievement" element={<NewAchievement />} />
             </Routes>
         </>
     )

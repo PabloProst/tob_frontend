@@ -6,7 +6,9 @@ export const AdminPanel = () => {
     return (
         <div className='home-design'>
             <div className='ingame-container-admin'>
-                <div className='text-admin-panel'>Create new Achievement</div>
+                <Link to='/newachievement'>
+                    <div className='text-admin-panel'>Create new Achievement</div>
+                </Link>
                 <div className='text-admin-panel'>Edit achievement</div>
                 <div className='text-admin-panel'>Delete achievement</div>
                 <Link to="/users">
