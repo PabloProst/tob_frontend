@@ -81,3 +81,8 @@ export const editAchievement = async (body, token) => {
 export const delAchievement = async (id) => {
   return await axios.delete(`http://localhost:3000/deleteupgrade/${id}`);
 };
+
+//Get all upgrades
+export const getAllAchievements = async () => {
+  return await axios.get('http://localhost:3000/upgrades');
+}

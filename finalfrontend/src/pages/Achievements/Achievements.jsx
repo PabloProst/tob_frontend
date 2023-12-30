@@ -1,12 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getAllAchievements } from '../../services/apiCalls';
 import './Achievements.css';
 
 export const Achievements = () => {
-    return (
-        <div className='home-design'>
-            <div className='ingame-container'>
+  const [achievements, setAchievements] = useState([]);
 
-            </div>
-        </div>
-    );
-}
+  useEffect(() => {
+    const getAchievements = async () => {
+      try {
+        const response = await getAllAchievements();
+        setAchievements(response.data.upgrades);
+      } catch (error) {
+        console.error('Error fetching achievements:', error);
+      }
+    };
+
+    getAchievements();
+  }, []);
+
+  return (
+    <div className='achievements-container'>
+      <h2 className='achievements-header'>Achievements</h2>
+      <ul className='achievements-list'>
+        {achievements.map(achievement => (
+          <div key={achievement.id} className='achievement-item'>
+            <strong className='achievement-name'>Name:</strong> {achievement.name}<br />
+            <strong className='achievement-description'>Description:</strong> {achievement.description}<br />
+            <strong className='achievement-cost'>Cost:</strong> {achievement.cost}<br />
+          </div>
+        ))}
+      </ul>
+    </div>
+  );
+};
