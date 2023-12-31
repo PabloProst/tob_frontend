@@ -1,14 +1,16 @@
 
 
 .profileDesign {
-
-    height: 100vh;
-    width: 100vw;
+    height: 40em;
+    width: 35em;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    border: solid 1px black;
+    background-color: wheat;
 }
 
 .editDesign {
@@ -22,13 +24,17 @@
 
     background-color: orange;
 
-    color: white;
+    color: black;
     font-size: small;
     ;
     cursor: pointer;
 
     border-radius: 1em;
     transition: 0.3s;
+
+    border: solid 1px black;
+    
+    margin: 1em;
 }
 
 .editDesign:hover {
@@ -63,5 +69,27 @@
 }
 
 .text-profile {
-    color: white;
+    color: black;
+    font-size: 1.2em;
+}
+
+.profile-border {
+
+    height: 100vh;
+    width: 100vw;
+
+    border: solid 1px black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-achievements-profile {
+
+    margin: 1em;
+}
+
+.text-profile-achievements {
+    font-size: 2em;
 }
