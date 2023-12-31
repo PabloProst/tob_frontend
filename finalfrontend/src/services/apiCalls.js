@@ -101,3 +101,14 @@ export const addUpgradeUser = async (upgradeId, userId) => {
     throw error;
   }
 };
+
+//Get upgrades by id
+export const getUpgradeById = async (userId) => {
+  try {
+    const response = await axios.get(`http://localhost:3000/myupgrades/${userId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error getting user upgrades:', error);
+    throw error; 
+  }
+};

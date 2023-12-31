@@ -69,13 +69,11 @@ export const PageNavbar = () => {
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
 
-    // Validar la entrada del usuario usando el validador
     errorCheck({ target: { name: 'name', value: user.name } });
     errorCheck({ target: { name: 'username', value: user.username } });
     errorCheck({ target: { name: 'email', value: user.email } });
     errorCheck({ target: { name: 'password', value: user.password } });
 
-    // Verificar errores de validación
     for (let test in userError) {
       if (userError[test] !== "") {
         return;
