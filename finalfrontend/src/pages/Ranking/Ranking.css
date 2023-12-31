@@ -1,20 +1,38 @@
+
 .ranking-container {
-    text-align: center;
-  }
-  
-  .ranking-table {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .column {
-    margin-left: 20px;
-  }
-  
-  .bold {
-    font-weight: bold;
-  }
-  
-  .margin-bottom {
-    margin-bottom: 8px;
-  }
+  background-color: #dee489;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 30em;
+  width: 50em;
+}
+
+.ranking-header {
+  color: #333;
+}
+
+.ranking-table {
+  display: flex;
+}
+
+.column {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.margin-bottom {
+  margin-bottom: 10px;
+}
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

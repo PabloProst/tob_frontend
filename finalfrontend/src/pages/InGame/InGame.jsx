@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './InGame.css';
-import { addScore } from '../../services/apiCalls';
+import { addScore, getAllAchievements } from '../../services/apiCalls';
+import { addUpgradeUser } from '../../services/apiCalls';
 import { useSelector } from 'react-redux';
 
 export const InGame = () => {
@@ -9,6 +10,33 @@ export const InGame = () => {
   const [gameOver, setGameOver] = useState(false);
 
   const userId = useSelector((state) => state.user.credentials.user_id);
+
+  useEffect(() => {
+    const checkUpgrade = async () => {
+      try {
+        // Obtén la lista de upgrades desde tu servidor
+        const upgradesResponse = await getAllAchievements();
+        const upgradesToCheck = upgradesResponse.data.upgrades;
+    
+        // Ordena los upgrades por costo de manera descendente (de mayor a menor)
+        const sortedUpgrades = upgradesToCheck.sort((a, b) => b.cost - a.cost);
+    
+        // Encuentra el primer upgrade cuyo costo ha sido superado
+        const upgradeToUnlock = sortedUpgrades.find((upgrade) => score >= upgrade.cost);
+    
+        if (upgradeToUnlock) {
+          // Agrega el registro en la tabla upgrades_users
+          await addUpgradeUser(upgradeToUnlock.id, userId);
+        }
+      } catch (error) {
+        console.error('Error checking upgrade:', error);
+      }
+    };
+    
+    if (gameOver) {
+      checkUpgrade();
+    }
+  }, [score, userId, gameOver]);
 
   const handleSquareClick = (index) => {
     if (index === bombIndex) {
@@ -22,6 +50,7 @@ export const InGame = () => {
   const handleGameOver = async () => {
     setGameOver(true);
     try {
+      // Agrega el puntaje al servidor
       const response = await addScore({ userId, score });
       console.log(response.data.message);
     } catch (error) {
@@ -43,7 +72,7 @@ export const InGame = () => {
           <div className='game-over-message'>
             GAME OVER. SCORE: {score}
             <div>
-            <button onClick={handleRestartGame} className='btn-play-again'>Play again</button>
+              <button onClick={handleRestartGame} className='btn-play-again'>Play again</button>
             </div>
           </div>
         ) : (
@@ -54,7 +83,7 @@ export const InGame = () => {
                 className={`square ${index === bombIndex ? 'bomb' : ''}`}
                 onClick={() => handleSquareClick(index)}
               >
-                {index === bombIndex ? '' : ''}
+                {index === bombIndex ? 'H' : ''}
               </div>
             ))}
           </div>

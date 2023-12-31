@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout, userData, login } from "../../pages/userSlice";
 import { logUser, registerUser } from '../../services/apiCalls';
 import { useNavigate } from 'react-router-dom';
+import { validator } from "../../services/useful";
 
 export const PageNavbar = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -25,6 +26,36 @@ export const PageNavbar = () => {
     navigate("/");
   };
 
+  const [user, setUser] = useState({
+    name: '',
+    username: '',
+    email: '',
+    password: '',
+  });
+
+  const [userError, setUserError] = useState({
+    nameError: '',
+    usernameError: '',
+    emailError: '',
+    passwordError: '',
+  });
+
+  const functionHandler = (e) => {
+    setUser((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const errorCheck = (e) => {
+    let error = validator(e.target.name, e.target.value);
+
+    setUserError((prevState) => ({
+      ...prevState,
+      [e.target.name + 'Error']: error,
+    }));
+  };
+
   const handleLoginClick = () => {
     setShowLogin(!showLogin);
     setShowRegister(false);
@@ -38,17 +69,25 @@ export const PageNavbar = () => {
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
 
-    const name = e.target.elements.name.value;
-    const username = e.target.elements.username.value;
-    const email = e.target.elements.email.value;
-    const password = e.target.elements.password.value;
+    // Validar la entrada del usuario usando el validador
+    errorCheck({ target: { name: 'name', value: user.name } });
+    errorCheck({ target: { name: 'username', value: user.username } });
+    errorCheck({ target: { name: 'email', value: user.email } });
+    errorCheck({ target: { name: 'password', value: user.password } });
+
+    // Verificar errores de validación
+    for (let test in userError) {
+      if (userError[test] !== "") {
+        return;
+      }
+    }
 
     try {
       const response = await registerUser({
-        name,
-        username,
-        email,
-        password,
+        name: user.name,
+        username: user.username,
+        email: user.email,
+        password: user.password,
       });
 
       console.log(response.data);
@@ -57,7 +96,7 @@ export const PageNavbar = () => {
       await handleLoginSubmit(e);
 
     } catch (error) {
-      console.error('Error during registration:', error);
+      console.error('Error durante el registro:', error);
     }
   };
 
@@ -82,7 +121,7 @@ export const PageNavbar = () => {
 
       console.log('Login successful:', response.data);
     } catch (error) {
-      console.error('Error during login:', error);
+      console.error('Error durante el inicio de sesión:', error);
     }
   };
 
@@ -127,11 +166,11 @@ export const PageNavbar = () => {
             <form onSubmit={handleLoginSubmit}>
               <div className="mb-3">
                 <label htmlFor="email" className="form-label">EMAIL:</label>
-                <input type="text" id="email" name="email" className="form-control" />
+                <input type="text" id="email" name="email" className="form-control" onBlur={errorCheck} />
               </div>
               <div className="mb-3">
                 <label htmlFor="password" className="form-label">PASSWORD:</label>
-                <input type="password" id="password" name="password" className="form-control" />
+                <input type="password" id="password" name="password" className="form-control" onBlur={errorCheck} />
               </div>
               <Button variant="warning" type="submit" className="d-block mx-auto border border-dark">
                 LOGIN
@@ -149,19 +188,31 @@ export const PageNavbar = () => {
             <form onSubmit={handleRegisterSubmit}>
               <div className="mb-3">
                 <label htmlFor="name" className="form-label">NAME:</label>
-                <input type="text" id="name" name="name" className="form-control" />
+                <input type="text" id="name" name="name" className="form-control" onBlur={errorCheck} />
+                {userError.nameError && (
+                  <div className="error-message">{userError.nameError}</div>
+                )}
               </div>
               <div className="mb-3">
                 <label htmlFor="username" className="form-label">USERNAME:</label>
-                <input type="text" id="username" name="username" className="form-control" />
+                <input type="text" id="username" name="username" className="form-control" onBlur={errorCheck} />
+                {userError.usernameError && (
+                  <div className="error-message">{userError.usernameError}</div>
+                )}
               </div>
               <div className="mb-3">
                 <label htmlFor="email" className="form-label">EMAIL:</label>
-                <input type="text" id="email" name="email" className="form-control" />
+                <input type="text" id="email" name="email" className="form-control" onBlur={errorCheck} />
+                {userError.emailError && (
+                  <div className="error-message">{userError.emailError}</div>
+                )}
               </div>
               <div className="mb-3">
                 <label htmlFor="password" className="form-label">PASSWORD:</label>
-                <input type="password" id="password" name="password" className="form-control" />
+                <input type="password" id="password" name="password" className="form-control" onBlur={errorCheck} />
+                {userError.passwordError && (
+                  <div className="error-message">{userError.passwordError}</div>
+                )}
               </div>
               <Button variant="warning" type="submit" className="d-block mx-auto border border-dark">
                 REGISTER

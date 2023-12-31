@@ -19,7 +19,7 @@ export const DeleteAchievement = () => {
       <div className='ingame-container-admin'>
         <h2>Delete an Achievement</h2>
         <div className='form-group'>
-          <label htmlFor='id'>Achievement ID:</label>
+          <label htmlFor='id' className='label-achievement'>Achievement ID:</label>
           <input
             type='text'
             id='id'

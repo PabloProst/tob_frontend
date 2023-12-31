@@ -86,3 +86,18 @@ export const delAchievement = async (id) => {
 export const getAllAchievements = async () => {
   return await axios.get('http://localhost:3000/upgrades');
 }
+
+// Add upgradesUser
+export const addUpgradeUser = async (upgradeId, userId) => {
+  try {
+    const response = await axios.post('http://localhost:3000/newupgradeuser', {
+      upgrade: upgradeId,
+      user: userId,
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error('Error en la llamada a la API:', error);
+    throw error;
+  }
+};

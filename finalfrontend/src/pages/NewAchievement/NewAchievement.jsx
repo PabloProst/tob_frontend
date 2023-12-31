@@ -30,7 +30,7 @@ export const NewAchievement = () => {
       <div className='ingame-container-admin'>
         <h2>Create a New Achievement</h2>
         <div className='form-group'>
-          <label htmlFor='name'>Name:</label>
+          <label htmlFor='name' className='label-achievement'>Name:</label>
           <input
             type='text'
             id='name'
@@ -39,7 +39,7 @@ export const NewAchievement = () => {
           />
         </div>
         <div className='form-group'>
-          <label htmlFor='description'>Description:</label>
+          <label htmlFor='description' className='label-achievement'>Description:</label>
           <input
             type='text'
             id='description'
@@ -48,7 +48,7 @@ export const NewAchievement = () => {
           />
         </div>
         <div className='form-group'>
-          <label htmlFor='cost'>Cost:</label>
+          <label htmlFor='cost' className='label-achievement'>Cost:</label>
           <input
             type='text'
             id='cost'
